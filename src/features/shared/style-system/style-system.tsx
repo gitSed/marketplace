@@ -5,7 +5,7 @@ import { IStyleSystemProps } from "./style-system.types";
 const StyleSystemComponents = {
   "chakra-ui": {
     component: dynamic(() =>
-      import("./chakra-ui").then((mod) => mod.ChakraUITheme)
+      import("./chakra-ui").then((mod) => mod.ChakraUIProvider)
     ),
   },
 };

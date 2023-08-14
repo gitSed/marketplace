@@ -1,1 +1,1 @@
-export { default as ChakraUITheme } from "./chakra-ui.theme";
+export { default as ChakraUIProvider } from "./chakra-ui.provider";
