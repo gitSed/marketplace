@@ -1,9 +1,9 @@
+import { HomeContainer } from "@/features/home";
+
 function HomePage() {
   return (
     <main>
-      <div>
-        <h1>Home Page</h1>
-      </div>
+      <HomeContainer />
     </main>
   );
 }
