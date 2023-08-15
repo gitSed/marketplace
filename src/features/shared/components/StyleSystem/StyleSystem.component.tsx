@@ -1,6 +1,6 @@
 import dynamic from "next/dynamic";
 
-import { IStyleSystemProps } from "./style-system.types";
+import { IStyleSystemProps } from "./StyleSystem.types";
 
 const StyleSystemComponents = {
   "chakra-ui": {

@@ -7,6 +7,14 @@ import shadows from "./theme-foundations/shadows";
 import textStyles from "./theme-foundations/textStyles";
 
 const defaultTheme: Record<string, any> = {
+  styles: {
+    global: {
+      body: {
+        bg: "black",
+        color: "white",
+      },
+    },
+  },
   breakpoints,
   colors,
   shadows,

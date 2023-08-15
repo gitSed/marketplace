@@ -1,4 +1,4 @@
-import { HomeContainer } from "@/features/home";
+import { HomeContainer } from "@/features/home/components";
 
 function HomePage() {
   return (
