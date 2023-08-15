@@ -1,8 +1,8 @@
 "use client";
 import { ChakraBaseProvider } from "@chakra-ui/react";
 
-import { overrideTheme } from "./chakra-ui.theme";
-import { ChakraUIProviderProps } from "./chakra-ui.types";
+import { overrideTheme } from "./ChakraUI.theme";
+import { ChakraUIProviderProps } from "./ChakraUI.types";
 
 function ChakraUIProvider(props: ChakraUIProviderProps) {
   const { children, theme } = props;
