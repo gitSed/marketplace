@@ -2,7 +2,6 @@
 import { Flex } from "@chakra-ui/react";
 
 import { LogoIcon } from "@/features/shared/assets";
-import { withStyledSystem } from "@/features/shared/components";
 
 import Menu from "./Menu/Menu.component";
 
@@ -25,4 +24,4 @@ function Navbar() {
   );
 }
 
-export default withStyledSystem(Navbar, "chakra-ui");
+export default Navbar;
