@@ -1,9 +1,13 @@
+"use client";
 import { HomeContainer } from "@/features/home/components";
+import { RestUserRepository } from "@/modules/user/infrastructure";
 
 function HomePage() {
+  const userRepository = new RestUserRepository();
+
   return (
     <main>
-      <HomeContainer />
+      <HomeContainer repository={userRepository} />
     </main>
   );
 }
