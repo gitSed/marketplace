@@ -6,6 +6,10 @@ import colors from "./theme-foundations/colors";
 import shadows from "./theme-foundations/shadows";
 import textStyles from "./theme-foundations/textStyles";
 
+// components
+import Button from "./theme-components/Button";
+import Link from "./theme-components/Link";
+
 const defaultTheme: Record<string, any> = {
   styles: {
     global: {
@@ -19,6 +23,10 @@ const defaultTheme: Record<string, any> = {
   colors,
   shadows,
   textStyles,
+  components: {
+    Button,
+    Link,
+  },
 };
 
 export const overrideTheme = (

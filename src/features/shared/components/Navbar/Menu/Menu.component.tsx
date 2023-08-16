@@ -1,4 +1,5 @@
-import { Text, Link, Flex } from "@chakra-ui/react";
+import NextLink from "next/link";
+import { Text, Flex } from "@chakra-ui/react";
 
 import { IMenuProps, IMenuItemProps } from "./Menu.types";
 
@@ -7,7 +8,7 @@ function MenuItem(props: IMenuItemProps) {
 
   return (
     <Flex
-      as={Link}
+      as={NextLink}
       href={href}
       px="1.25rem"
       height="2.875rem"
@@ -22,7 +23,7 @@ function Menu(props: IMenuProps) {
   const { items } = props;
 
   return (
-    <Flex>
+    <Flex ml="auto">
       {items.map((item) => (
         <MenuItem key={item.name} name={item.name} href={item.href} />
       ))}
