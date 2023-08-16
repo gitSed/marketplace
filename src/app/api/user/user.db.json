@@ -1,0 +1,12 @@
+{
+  "1": {
+    "name": "admin",
+    "email": "admin@marketplace.com",
+    "password": "admin"
+  },
+  "2": {
+    "name": "John Doe",
+    "email": "john.doe@marketplace.com",
+    "password": "john.doe"
+  }
+}
