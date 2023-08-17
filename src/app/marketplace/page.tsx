@@ -1,8 +1,11 @@
+import { Navbar } from "@/features/shared/components";
+
 function MarketplacePage() {
   return (
-    <div>
+    <main>
+      <Navbar />
       <h1>Marketplace Page</h1>
-    </div>
+    </main>
   );
 }
 

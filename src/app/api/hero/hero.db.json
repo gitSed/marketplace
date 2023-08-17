@@ -1,0 +1,11 @@
+{
+  "illustration": {
+    "src": "https://res.cloudinary.com/dtdygo8fv/image/upload/v1692240709/hero_marketplace.png",
+    "description": "Space Walking"
+  },
+  "summary": {
+    "totalSale": "240k",
+    "auctions": "100k",
+    "artists": "50k"
+  }
+}

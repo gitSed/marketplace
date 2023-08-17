@@ -1,19 +1,22 @@
 import { useEffect } from "react";
 
-import { HomeView } from "@/features/home/components";
+import { HeroController } from "@/features/home/controllers";
 import { getAllUsers } from "@/modules/user/application";
 
 import { IHomeContainerProps } from "./HomeContainer.types";
 
 function HomeContainer(props: IHomeContainerProps) {
-  const { repository } = props;
+  const { repositories } = props;
 
   useEffect(() => {
-    // TODO - Remove
-    getAllUsers(repository);
+    getAllUsers(repositories.userRepository);
   }, []);
 
-  return <HomeView />;
+  return (
+    <>
+      <HeroController repository={repositories.heroRepository} />
+    </>
+  );
 }
 
 export default HomeContainer;
