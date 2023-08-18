@@ -1,1 +1,1 @@
-export { default as RestHeroRepository } from "./RestHeroRepository";
+export { default as FetchHeroRepository } from "./FetchHeroRepository";

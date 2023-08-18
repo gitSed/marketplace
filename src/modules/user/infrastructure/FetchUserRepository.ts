@@ -8,7 +8,7 @@ interface ApiUser {
   };
 }
 
-class RestUserRepository implements UserRepository {
+class FetchUserRepository implements UserRepository {
   async getAll(): Promise<User[]> {
     const response = await fetch("http://localhost:3001/api/users");
     const users = (await response.json()) as ApiUser;
@@ -22,4 +22,4 @@ class RestUserRepository implements UserRepository {
   }
 }
 
-export default RestUserRepository;
+export default FetchUserRepository;

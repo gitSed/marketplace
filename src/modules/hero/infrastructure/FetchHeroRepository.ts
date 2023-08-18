@@ -1,15 +1,16 @@
 import { Hero, HeroRepository } from "../domain";
 
 interface ApiHero {
+  id: string;
+  name: string;
+  creator: {
+    id: string;
+    name: string;
+    avatar: string;
+  };
   illustration: {
     src: string;
     description: string;
-  };
-  nftId: string;
-  nftName: string;
-  nftCreator: {
-    name: string;
-    avatar: string;
   };
   summary: {
     totalSale: string;
@@ -18,30 +19,31 @@ interface ApiHero {
   };
 }
 
-class RestHeroRepository implements HeroRepository {
+class FetchHeroRepository implements HeroRepository {
   async get(): Promise<Hero> {
     const response = await fetch("http://localhost:3001/api/hero");
     const hero = (await response.json()) as ApiHero;
 
     return {
       nft: {
+        id: hero.id,
+        name: hero.name,
+        creator: {
+          id: hero.creator.id,
+          image: {
+            url: hero.creator.avatar,
+            title: hero.creator.name,
+            description: hero.creator.name,
+            mediaType: "image",
+          },
+          name: hero.creator.name,
+        },
         image: {
           url: hero.illustration.src,
           title: hero.illustration.description,
           description: hero.illustration.description,
           mediaType: "image",
         },
-        creator: {
-          image: {
-            url: hero.nftCreator.avatar,
-            title: hero.nftCreator.name,
-            description: hero.nftCreator.name,
-            mediaType: "image",
-          },
-          name: hero.nftCreator.name,
-        },
-        name: hero.nftName,
-        id: hero.nftId,
       },
       summary: {
         totalSale: hero.summary.totalSale,
@@ -52,4 +54,4 @@ class RestHeroRepository implements HeroRepository {
   }
 }
 
-export default RestHeroRepository;
+export default FetchHeroRepository;

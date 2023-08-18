@@ -1,1 +1,1 @@
-export { default as RestUserRepository } from "./RestUserRepository";
+export { default as FetchUserRepository } from "./FetchUserRepository";
