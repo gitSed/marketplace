@@ -5,6 +5,12 @@ interface ApiHero {
     src: string;
     description: string;
   };
+  nftId: string;
+  nftName: string;
+  nftCreator: {
+    name: string;
+    avatar: string;
+  };
   summary: {
     totalSale: string;
     auctions: string;
@@ -18,10 +24,24 @@ class RestHeroRepository implements HeroRepository {
     const hero = (await response.json()) as ApiHero;
 
     return {
-      illustration: {
-        description: hero.illustration.description,
-        image: hero.illustration.src,
-        title: hero.illustration.description,
+      nft: {
+        image: {
+          url: hero.illustration.src,
+          title: hero.illustration.description,
+          description: hero.illustration.description,
+          mediaType: "image",
+        },
+        creator: {
+          image: {
+            url: hero.nftCreator.avatar,
+            title: hero.nftCreator.name,
+            description: hero.nftCreator.name,
+            mediaType: "image",
+          },
+          name: hero.nftCreator.name,
+        },
+        name: hero.nftName,
+        id: hero.nftId,
       },
       summary: {
         totalSale: hero.summary.totalSale,

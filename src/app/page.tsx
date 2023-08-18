@@ -8,6 +8,12 @@ function HomePage() {
   const userRepository = new RestUserRepository();
   const heroRepository = new RestHeroRepository();
 
+  /**
+   * If offline mode is needed, we can create offline repositories:
+   * const userRepository = new OfflineUserRepository();
+   * const heroRepository = new OfflineHeroRepository();
+   */
+
   return (
     <main>
       <Navbar />

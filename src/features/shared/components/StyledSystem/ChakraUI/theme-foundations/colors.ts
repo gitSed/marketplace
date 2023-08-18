@@ -63,6 +63,7 @@ const colors: Record<string, any> = {
   lightGold: "#DFC878",
   black: "#0D0D12",
   background: "#EDEAE2",
+  backgroundSecondary: "#3B3B3B",
 };
 
 export default colors;

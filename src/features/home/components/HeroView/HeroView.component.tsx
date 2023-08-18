@@ -1,7 +1,7 @@
-import Image from "next/image";
-import { Flex, Text, Button, AspectRatio, Box } from "@chakra-ui/react";
+import { Flex, Text, Button } from "@chakra-ui/react";
 
 import { RocketIcon } from "@/features/shared/assets";
+import { NftCard } from "@/features/shared/components";
 
 import {
   IHeroViewProps,
@@ -42,10 +42,20 @@ function HeroView(props: IHeroViewProps) {
   return (
     <Flex width="100%" flexDirection="row" gap="2rem" paddingY="5rem">
       <Flex flex="0 1 50%" flexDirection="column">
-        <Text textStyle="h1" lineHeight="110%" textTransform="capitalize">
+        <Text
+          textStyle="h1"
+          fontSize="4.125rem"
+          lineHeight="4.625rem"
+          textTransform="capitalize"
+        >
           Discover digital art & Collect NFTs
         </Text>
-        <Text textStyle="h6" mt="1.875rem">
+        <Text
+          textStyle="h6"
+          fontSize="1.375rem"
+          lineHeight="2.25rem "
+          mt="1.875rem"
+        >
           NFT marketplace UI created with Anima for Figma. Collect, buy and sell
           art from more than 20k NFT artists.
         </Text>
@@ -56,15 +66,7 @@ function HeroView(props: IHeroViewProps) {
         <HeroDetails summary={hero.summary} />
       </Flex>
       <Flex flex="0 1 50%">
-        <Box w="100%" h="auto">
-          <AspectRatio ratio={1}>
-            <Image
-              src={hero.illustration.image}
-              alt={hero.illustration.description}
-              fill
-            />
-          </AspectRatio>
-        </Box>
+        <NftCard nft={hero.nft} />
       </Flex>
     </Flex>
   );
