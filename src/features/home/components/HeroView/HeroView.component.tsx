@@ -15,7 +15,7 @@ function HeroDetailItem(props: IHeroDetailItemProps) {
   return (
     <Flex flexDirection="column" flex="1">
       <Text textStyle="h3" fontSize="1.75rem" fontWeight={700}>
-        {figure}+
+        {figure}
       </Text>
       <Text textStyle="h4" fontWeight={400}>
         {title}
@@ -29,9 +29,9 @@ function HeroDetails(props: IHeroDetailsProps) {
 
   return (
     <Flex gap="1.875rem" mt="1.75rem">
-      <HeroDetailItem figure={summary.totalSale} title="Total Sale" />
-      <HeroDetailItem figure={summary.totalAuctions} title="Auctions" />
-      <HeroDetailItem figure={summary.totalArtists} title="Artists" />
+      <HeroDetailItem figure={`${summary.totalSale} +`} title="Total Sale" />
+      <HeroDetailItem figure={`${summary.totalAuctions} +`} title="Auctions" />
+      <HeroDetailItem figure={`${summary.totalArtists} +`} title="Artists" />
     </Flex>
   );
 }

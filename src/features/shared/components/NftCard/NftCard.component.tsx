@@ -1,21 +1,47 @@
 "use client";
-import { AspectRatio, Box, Flex, Image, Text } from "@chakra-ui/react";
+import NextLink from "next/link";
+import { AspectRatio, Box, Flex, Image, Link, Text } from "@chakra-ui/react";
 
-import { INftCardProps } from "./NftCard.types";
+import { INftCardProps, INftCreatorProps } from "./NftCard.types";
+
+function Creator(props: INftCreatorProps) {
+  const { creator } = props;
+
+  return (
+    <Link as={NextLink} href={`/creator/${creator.id}`} w="fit-content">
+      <Flex gap="0.75rem" w="fit-content">
+        <Image
+          src={creator.image.url}
+          alt={creator.image.title}
+          aria-label={creator.image.description}
+          width="1.5rem"
+          height="1.5rem"
+          borderRadius="50%"
+        />
+        <Text textStyle="subtitle2" fontWeight="400">
+          {creator.name}
+        </Text>
+      </Flex>
+    </Link>
+  );
+}
 
 function NftCard(props: INftCardProps) {
   const { nft } = props;
 
   return (
     <Box width="100%" borderRadius="1.25rem 1.25rem 0 0" overflow="hidden">
-      <AspectRatio maxH="25rem" ratio={1}>
-        <Image
-          src={nft.image.url}
-          alt={nft.image.title}
-          aria-label={nft.image.description}
-          fetchPriority="high"
-        />
-      </AspectRatio>
+      <Link as={NextLink} href={`/nft/${nft.id}`}>
+        <AspectRatio ratio={1} maxH="25rem" overflow="hidden">
+          <Image
+            src={nft.image.url}
+            alt={nft.image.title}
+            aria-label={nft.image.description}
+            fetchPriority="high"
+            objectFit="contain"
+          />
+        </AspectRatio>
+      </Link>
       <Flex
         flexDirection="column"
         bg="backgroundSecondary"
@@ -26,19 +52,7 @@ function NftCard(props: INftCardProps) {
         <Text textStyle="h5" fontSize="1.375rem">
           {nft.name}
         </Text>
-        <Flex gap="0.75rem">
-          <Image
-            src={nft.creator.image.url}
-            alt={nft.creator.image.title}
-            aria-label={nft.creator.image.description}
-            width="1.5rem"
-            height="1.5rem"
-            borderRadius="50%"
-          />
-          <Text textStyle="subtitle2" fontWeight="400">
-            {nft.creator.name}
-          </Text>
-        </Flex>
+        <Creator creator={nft.creator} />
       </Flex>
     </Box>
   );

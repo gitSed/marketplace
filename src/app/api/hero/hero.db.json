@@ -1,13 +1,14 @@
 {
+  "id": "0x1234567890123456789012345678901234567890",
+  "name": "Space Walking",
+  "creator": {
+    "id": "0x1234567890123456789012345678901234567890",
+    "name": "John Doe",
+    "avatar": "https://res.cloudinary.com/dtdygo8fv/image/upload/v1692313783/NFT%20Marketplace/creators/lge8yvfvjp0zimbigx5v.png"
+  },
   "illustration": {
     "src": "https://res.cloudinary.com/dtdygo8fv/image/upload/v1692313934/NFT%20Marketplace/hero/hwlkrazw2vstuxgfwq2l.png",
     "description": "Space Walking"
-  },
-  "nftId": "0x1234567890123456789012345678901234567890",
-  "nftName": "Space Walking",
-  "nftCreator": {
-    "name": "John Doe",
-    "avatar": "https://res.cloudinary.com/dtdygo8fv/image/upload/v1692313783/NFT%20Marketplace/creators/lge8yvfvjp0zimbigx5v.png"
   },
   "summary": {
     "totalSale": "240k",
