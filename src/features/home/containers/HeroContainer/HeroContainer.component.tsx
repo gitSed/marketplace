@@ -5,9 +5,9 @@ import { HeroView } from "@/features/home/components";
 import { getHeroInfo } from "@/modules/hero/application";
 import { Hero } from "@/modules/hero/domain";
 
-import { IHeroControllerProps } from "./HeroController.types";
+import { IHeroContainerProps } from "./HeroContainer.types";
 
-function HeroController(props: IHeroControllerProps) {
+function HeroContainer(props: IHeroContainerProps) {
   const { repository } = props;
 
   const [hero, setHero] = useState<Hero | undefined>();
@@ -43,4 +43,4 @@ function HeroController(props: IHeroControllerProps) {
   );
 }
 
-export default HeroController;
+export default HeroContainer;

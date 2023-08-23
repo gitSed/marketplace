@@ -2,7 +2,7 @@ import { Box } from "@chakra-ui/react";
 
 import { RegisterView } from "@/features/register/components";
 
-function RegisterController() {
+function RegisterContainer() {
   const renderLoading = (): JSX.Element => {
     return (
       <Box
@@ -17,4 +17,4 @@ function RegisterController() {
   return <RegisterView />;
 }
 
-export default RegisterController;
+export default RegisterContainer;

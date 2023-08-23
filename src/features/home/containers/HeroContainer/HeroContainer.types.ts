@@ -1,5 +1,5 @@
 import { HeroRepository } from "@/modules/hero/domain";
 
-export interface IHeroControllerProps {
+export interface IHeroContainerProps {
   repository: HeroRepository;
 }

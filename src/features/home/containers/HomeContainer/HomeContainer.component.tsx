@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-import { HeroController } from "@/features/home/controllers";
+import { HeroContainer } from "@/features/home/containers";
 import { getAllUsers } from "@/modules/user/application";
 
 import { IHomeContainerProps } from "./HomeContainer.types";
@@ -14,7 +14,7 @@ function HomeContainer(props: IHomeContainerProps) {
 
   return (
     <>
-      <HeroController repository={repositories.heroRepository} />
+      <HeroContainer repository={repositories.heroRepository} />
     </>
   );
 }

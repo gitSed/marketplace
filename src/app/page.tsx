@@ -1,6 +1,6 @@
 "use client";
 import { Navbar } from "@/features/shared/components";
-import { HomeContainer } from "@/features/home/controllers";
+import { HomeContainer } from "@/features/home/containers";
 import { FetchUserRepository } from "@/modules/user/infrastructure";
 import { FetchHeroRepository } from "@/modules/hero/infrastructure";
 
