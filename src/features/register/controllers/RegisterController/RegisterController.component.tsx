@@ -14,14 +14,7 @@ function RegisterController() {
     );
   };
 
-  return (
-    <Box
-      px={{ base: 4, md: 8, lg: "7rem", xl: "10rem" }}
-      pb={{ base: 0, md: 6 }}
-    >
-      <RegisterView />
-    </Box>
-  );
+  return <RegisterView />;
 }
 
 export default RegisterController;
