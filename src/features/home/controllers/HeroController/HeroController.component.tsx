@@ -12,6 +12,17 @@ function HeroController(props: IHeroControllerProps) {
 
   const [hero, setHero] = useState<Hero | undefined>();
 
+  const renderLoading = (): JSX.Element => {
+    return (
+      <Box
+        px={{ base: 4, md: 8, lg: "7rem", xl: "10rem" }}
+        pb={{ base: 0, md: 6 }}
+      >
+        Loading...
+      </Box>
+    );
+  };
+
   useEffect(() => {
     getHeroInfo(repository).then((hero) => {
       setHero(hero);
@@ -19,7 +30,7 @@ function HeroController(props: IHeroControllerProps) {
   }, []);
 
   if (!hero) {
-    return <div>Loading...</div>;
+    return renderLoading();
   }
 
   return (

@@ -1,4 +1,5 @@
-import { Flex, Text, Button } from "@chakra-ui/react";
+import NextLink from "next/link";
+import { Flex, Text, Button, Link } from "@chakra-ui/react";
 
 import { RocketIcon } from "@/features/shared/assets";
 import { NftCard } from "@/features/shared/components";
@@ -59,10 +60,12 @@ function HeroView(props: IHeroViewProps) {
           NFT marketplace UI created with Anima for Figma. Collect, buy and sell
           art from more than 20k NFT artists.
         </Text>
-        <Button maxW="14rem" mt="2.125rem" gap="0.75rem">
-          <RocketIcon />
-          Get Started
-        </Button>
+        <Link as={NextLink} href="/register" w="fit-content">
+          <Button maxW="14rem" mt="2.125rem" gap="0.75rem">
+            <RocketIcon />
+            Get Started
+          </Button>
+        </Link>
         <HeroDetails summary={hero.summary} />
       </Flex>
       <Flex flex="0 1 50%">
