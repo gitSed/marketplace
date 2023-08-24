@@ -27,7 +27,7 @@ function RegisterView(props: IRegisterViewProps) {
         flex="0 1 50%"
         justifyContent="center"
         flexDirection="column"
-        pr={{ base: 4, md: 8, lg: "7rem", xl: "10rem" }}
+        paddingRight={{ base: 4, md: 8, lg: "7rem", xl: "10rem" }}
       >
         <Text textStyle="h1" mb="0.625rem">
           Create account

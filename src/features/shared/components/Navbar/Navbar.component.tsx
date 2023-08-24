@@ -16,9 +16,9 @@ function Navbar() {
     <Flex
       alignItems="center"
       justifyContent="space-between"
-      padding="1.25rem 3.125rem"
       gap="0.75rem"
-      px={{ base: 2, md: 4, lg: "4rem", xl: "7rem" }}
+      paddingY="1.25rem"
+      paddingX={{ base: 2, md: 4, lg: "4rem", xl: "7rem" }}
     >
       <LogoIcon />
       <Menu items={menuItems} />

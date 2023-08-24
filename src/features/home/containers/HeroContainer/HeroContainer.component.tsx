@@ -15,8 +15,8 @@ function HeroContainer(props: IHeroContainerProps) {
   const renderLoading = (): JSX.Element => {
     return (
       <Box
-        px={{ base: 4, md: 8, lg: "7rem", xl: "10rem" }}
-        pb={{ base: 0, md: 6 }}
+        paddingX={{ base: 4, md: 8, lg: "7rem", xl: "10rem" }}
+        paddingBottom={{ base: 0, md: 6 }}
       >
         Loading...
       </Box>
@@ -35,8 +35,8 @@ function HeroContainer(props: IHeroContainerProps) {
 
   return (
     <Box
-      px={{ base: 4, md: 8, lg: "7rem", xl: "10rem" }}
-      pb={{ base: 0, md: 6 }}
+      paddingX={{ base: 4, md: 8, lg: "7rem", xl: "10rem" }}
+      paddingBottom={{ base: 0, md: 6 }}
     >
       <HeroView hero={hero} />
     </Box>

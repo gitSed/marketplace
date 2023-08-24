@@ -10,7 +10,7 @@ function MenuItem(props: IMenuItemProps) {
     <Flex
       as={NextLink}
       href={href}
-      px="1.25rem"
+      paddingX="1.25rem"
       height="2.875rem"
       alignItems="center"
     >
