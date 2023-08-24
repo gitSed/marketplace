@@ -2,15 +2,14 @@ import { Box, Flex, Image, Text } from "@chakra-ui/react";
 
 import { CreateAccountForm } from "@/features/register/components";
 import { createAccountEmptyState } from "@/features/register/utils";
-import { Account } from "@/modules/register/domain";
+
+import { IRegisterViewProps } from "./RegisterView.types";
 
 const imagePlaceholderUrl =
   "https://res.cloudinary.com/dtdygo8fv/image/upload/v1692831661/NFT%20Marketplace/register/kdgoimndgje7c2pnna71.png";
 
-function RegisterView() {
-  const handleSubmit = (values: Account) => {
-    console.log(values);
-  };
+function RegisterView(props: IRegisterViewProps) {
+  const { onSubmit, hasError, isLoading } = props;
 
   return (
     <Flex gap="3.75rem">
@@ -36,9 +35,9 @@ function RegisterView() {
         </Text>
         <CreateAccountForm
           initialValues={createAccountEmptyState()}
-          isFailed={false}
-          isSubmitting={false}
-          onSubmit={handleSubmit}
+          isFailed={hasError}
+          isSubmitting={isLoading}
+          onSubmit={onSubmit}
         />
       </Flex>
     </Flex>
