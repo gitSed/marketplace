@@ -1,24 +1,35 @@
+import { useEffect } from "react";
 import { Button, Flex, VStack } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import { Input } from "@/features/shared/components";
-import { Account, AccountSchema } from "@/modules/register/domain";
+import { AccountSchema } from "@/modules/register/domain";
 
-import { ICreateAccountFormProps } from "./CreateAccountForm.types";
+import {
+  ICreateAccountFormProps,
+  ICreateAccountFormFields,
+} from "./CreateAccountForm.types";
 
 function CreateAccountForm(props: ICreateAccountFormProps) {
-  const { initialValues, isFailed, isSubmitting, onSubmit } = props;
+  const { initialValues, isFailed, isSubmitting, isSuccess, onSubmit } = props;
 
   const {
     control,
-    handleSubmit,
     formState: { isValid },
-  } = useForm<Account>({
+    handleSubmit,
+    reset,
+  } = useForm<ICreateAccountFormFields>({
     resolver: zodResolver(AccountSchema),
-    mode: "onChange",
-    defaultValues: initialValues,
+    mode: "onBlur",
+    defaultValues: { ...initialValues, confirmPassword: "" },
   });
+
+  useEffect(() => {
+    if (isSuccess) {
+      reset();
+    }
+  }, [isSuccess]);
 
   return (
     <Flex as="form" onSubmit={handleSubmit(onSubmit)} flexDirection="column">
@@ -29,6 +40,7 @@ function CreateAccountForm(props: ICreateAccountFormProps) {
           name="username"
           control={control}
           placeholder="Username"
+          isDisabled={isSubmitting}
         />
         <Input
           hiddenLabel
@@ -36,6 +48,7 @@ function CreateAccountForm(props: ICreateAccountFormProps) {
           name="email"
           control={control}
           placeholder="Email Address"
+          isDisabled={isSubmitting}
         />
         <Input
           hiddenLabel
@@ -43,13 +56,15 @@ function CreateAccountForm(props: ICreateAccountFormProps) {
           name="password"
           control={control}
           placeholder="Password"
+          isDisabled={isSubmitting}
         />
         <Input
           hiddenLabel
           label="Confirm Password"
-          name=""
+          name="confirmPassword"
           control={control}
           placeholder="Confirm Password"
+          isDisabled={isSubmitting}
         />
       </VStack>
       <Button

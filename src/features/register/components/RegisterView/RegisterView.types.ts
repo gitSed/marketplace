@@ -4,4 +4,5 @@ export interface IRegisterViewProps {
   onSubmit: (account: Account) => void;
   isLoading: boolean;
   hasError: boolean;
+  isSuccess: boolean;
 }

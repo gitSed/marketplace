@@ -64,6 +64,7 @@ function RegisterContainer(props: IRegisterContainerProps) {
       onSubmit={handleSubmit}
       hasError={!!errorAlert}
       isLoading={isFetching}
+      isSuccess={!!successAlert}
     />
   );
 }
