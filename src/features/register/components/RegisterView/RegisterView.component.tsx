@@ -1,4 +1,4 @@
-import { Box, Flex, Image, Text } from "@chakra-ui/react";
+import { AspectRatio, Box, Flex, Image, Text } from "@chakra-ui/react";
 
 import { CreateAccountForm } from "@/features/register/components";
 import { createAccountEmptyState } from "@/features/register/utils";
@@ -14,11 +14,14 @@ function RegisterView(props: IRegisterViewProps) {
   return (
     <Flex gap="3.75rem">
       <Box flex="0 1 50%">
-        <Image
-          src={imagePlaceholderUrl}
-          alt="SignUp Placeholder Graphic"
-          fetchPriority="high"
-        />
+        <AspectRatio ratio={100 / 95}>
+          <Image
+            src={imagePlaceholderUrl}
+            alt="SignUp Placeholder Graphic"
+            fetchPriority="high"
+            objectFit="contain"
+          />
+        </AspectRatio>
       </Box>
       <Flex
         flex="0 1 50%"
@@ -33,13 +36,15 @@ function RegisterView(props: IRegisterViewProps) {
           Welcome! enter your details and start creating, collecting and selling
           NFTs.
         </Text>
-        <CreateAccountForm
-          initialValues={createAccountEmptyState()}
-          isFailed={hasError}
-          isSubmitting={isLoading}
-          isSuccess={isSuccess}
-          onSubmit={onSubmit}
-        />
+        <Box maxW="25rem">
+          <CreateAccountForm
+            initialValues={createAccountEmptyState()}
+            isFailed={hasError}
+            isSubmitting={isLoading}
+            isSuccess={isSuccess}
+            onSubmit={onSubmit}
+          />
+        </Box>
       </Flex>
     </Flex>
   );

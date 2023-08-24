@@ -1,9 +1,8 @@
 import { useState } from "react";
-import { Box } from "@chakra-ui/react";
 
 import { RegisterView } from "@/features/register/components";
-import { CreateAccountRequest, Account } from "@/modules/register/domain";
 import { FetchError } from "@/modules/shared/domain";
+import { CreateAccountRequest, Account } from "@/modules/register/domain";
 import { createAccount } from "@/modules/register/application";
 
 import { IRegisterContainerProps } from "./RegisterContainer.types";
@@ -38,17 +37,6 @@ function RegisterContainer(props: IRegisterContainerProps) {
       .finally(() => {
         setIsFetching(false);
       });
-  };
-
-  const renderLoading = (): JSX.Element => {
-    return (
-      <Box
-        px={{ base: 4, md: 8, lg: "7rem", xl: "10rem" }}
-        pb={{ base: 0, md: 6 }}
-      >
-        Loading...
-      </Box>
-    );
   };
 
   if (!!errorAlert) {
