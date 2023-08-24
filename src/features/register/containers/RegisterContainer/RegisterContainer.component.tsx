@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Box } from "@chakra-ui/react";
 
 import { RegisterView } from "@/features/register/components";
-import { Account } from "@/modules/register/domain";
+import { CreateAccountRequest, Account } from "@/modules/register/domain";
 import { FetchError } from "@/modules/shared/domain";
 import { createAccount } from "@/modules/register/application";
 
@@ -13,12 +13,18 @@ function RegisterContainer(props: IRegisterContainerProps) {
 
   const [errorAlert, setErrorAlert] = useState<undefined | string>();
   const [successAlert, setSuccessAlert] = useState<undefined | string>();
-  const [isLoading, setIsLoading] = useState(false);
+  const [isFetching, setIsFetching] = useState(false);
 
-  const handleSubmit = (values: Account) => {
-    setIsLoading(true);
+  const handleSubmit = (formValues: Account) => {
+    setIsFetching(true);
 
-    createAccount(repository)(values)
+    const request: CreateAccountRequest = {
+      email: formValues.email,
+      password: formValues.password,
+      username: formValues.username,
+    };
+
+    createAccount(repository)(request)
       .then(() => {
         setSuccessAlert("Account created successfully");
       })
@@ -30,7 +36,7 @@ function RegisterContainer(props: IRegisterContainerProps) {
         }
       })
       .finally(() => {
-        setIsLoading(false);
+        setIsFetching(false);
       });
   };
 
@@ -46,18 +52,18 @@ function RegisterContainer(props: IRegisterContainerProps) {
   };
 
   if (!!errorAlert) {
-    console.log("CreateAccountErrorAlert: ", errorAlert);
+    console.log(errorAlert);
   }
 
   if (!!successAlert) {
-    console.log("CreateAccountSuccessAlert: ", successAlert);
+    console.log(successAlert);
   }
 
   return (
     <RegisterView
       onSubmit={handleSubmit}
       hasError={!!errorAlert}
-      isLoading={isLoading}
+      isLoading={isFetching}
     />
   );
 }
