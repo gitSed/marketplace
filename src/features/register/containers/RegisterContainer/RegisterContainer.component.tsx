@@ -1,18 +1,48 @@
-import { useState } from "react";
+import { useCallback, useRef, useState } from "react";
+
+import { ToastId, useToast } from "@chakra-ui/react";
 
 import { RegisterView } from "@/features/register/components";
+import { Alert } from "@/features/shared/components";
 import { FetchError } from "@/modules/shared/domain";
 import { CreateAccountRequest, Account } from "@/modules/register/domain";
 import { createAccount } from "@/modules/register/application";
 
 import { IRegisterContainerProps } from "./RegisterContainer.types";
 
+const toastDuration = 40000;
+
 function RegisterContainer(props: IRegisterContainerProps) {
   const { repository } = props;
 
-  const [errorAlert, setErrorAlert] = useState<undefined | string>();
-  const [successAlert, setSuccessAlert] = useState<undefined | string>();
+  const toastIdRef = useRef<ToastId>();
+
   const [isFetching, setIsFetching] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+
+  const toast = useToast({
+    position: "bottom",
+    duration: toastDuration,
+  });
+
+  const closeToast = useCallback(() => {
+    if (toastIdRef.current) {
+      toast.close(toastIdRef.current);
+    }
+  }, [toast]);
+
+  const showToast = useCallback(
+    (status: "info" | "warning" | "success", message: string) => {
+      toastIdRef.current = toast({
+        render: () => {
+          return (
+            <Alert message={message} status={status} onDismiss={closeToast} />
+          );
+        },
+      });
+    },
+    [toastIdRef, toast]
+  );
 
   const handleSubmit = (formValues: Account) => {
     setIsFetching(true);
@@ -25,13 +55,14 @@ function RegisterContainer(props: IRegisterContainerProps) {
 
     createAccount(repository)(request)
       .then(() => {
-        setSuccessAlert("Account created successfully");
+        showToast("success", "Account created successfully");
+        setIsSuccess(true);
       })
       .catch((error) => {
         if (error instanceof FetchError) {
-          setErrorAlert(error.message);
+          showToast("warning", error.message);
         } else {
-          setErrorAlert("Something went wrong");
+          showToast("warning", "Something went wrong");
         }
       })
       .finally(() => {
@@ -39,19 +70,11 @@ function RegisterContainer(props: IRegisterContainerProps) {
       });
   };
 
-  if (!!errorAlert) {
-    console.log(errorAlert);
-  }
-
-  if (!!successAlert) {
-    console.log(successAlert);
-  }
-
   return (
     <RegisterView
       onSubmit={handleSubmit}
       isLoading={isFetching}
-      isSuccess={!!successAlert}
+      isSuccess={isSuccess}
     />
   );
 }

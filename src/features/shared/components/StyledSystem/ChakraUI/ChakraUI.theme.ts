@@ -9,6 +9,7 @@ import textStyles from "./theme-foundations/textStyles";
 // components
 import Button from "./theme-components/Button";
 import Link from "./theme-components/Link";
+import Alert from "./theme-components/Alert";
 
 const defaultTheme: Record<string, any> = {
   styles: {
@@ -26,6 +27,7 @@ const defaultTheme: Record<string, any> = {
   components: {
     Button,
     Link,
+    Alert,
   },
 };
 
