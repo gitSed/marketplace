@@ -21,7 +21,9 @@ interface ApiHero {
 
 class FetchHeroRepository implements HeroRepository {
   async get(): Promise<Hero> {
-    const response = await fetch("http://localhost:3001/api/hero");
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_REACT_APP_API_URL}/hero`
+    );
     const hero = (await response.json()) as ApiHero;
 
     return {

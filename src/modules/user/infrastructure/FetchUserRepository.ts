@@ -10,7 +10,9 @@ interface ApiUser {
 
 class FetchUserRepository implements UserRepository {
   async getAll(): Promise<User[]> {
-    const response = await fetch("http://localhost:3001/api/users");
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_REACT_APP_API_URL}/users`
+    );
     const users = (await response.json()) as ApiUser;
 
     return Object.entries(users).map(([id, user]) => ({
