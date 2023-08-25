@@ -1,5 +1,6 @@
 "use client";
-import { Button, Flex } from "@chakra-ui/react";
+import { Button, Flex, Link } from "@chakra-ui/react";
+import NextLink from "next/link";
 
 import { LogoIcon, UserIcon } from "@/features/shared/assets";
 
@@ -20,12 +21,16 @@ function Navbar() {
       paddingY="1.25rem"
       paddingX={{ base: 2, md: 4, lg: "4rem", xl: "7rem" }}
     >
-      <LogoIcon />
+      <Link as={NextLink} href="/">
+        <LogoIcon />
+      </Link>
       <Menu items={menuItems} />
-      <Button textStyle="h6" gap="0.75rem">
-        <UserIcon />
-        Sign Up
-      </Button>
+      <Link as={NextLink} href="/register">
+        <Button textStyle="h6" gap="0.75rem">
+          <UserIcon />
+          Sign Up
+        </Button>
+      </Link>
     </Flex>
   );
 }
