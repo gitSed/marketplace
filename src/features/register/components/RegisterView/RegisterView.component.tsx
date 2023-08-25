@@ -9,7 +9,7 @@ const imagePlaceholderUrl =
   "https://res.cloudinary.com/dtdygo8fv/image/upload/v1692831661/NFT%20Marketplace/register/kdgoimndgje7c2pnna71.png";
 
 function RegisterView(props: IRegisterViewProps) {
-  const { onSubmit, hasError, isLoading, isSuccess } = props;
+  const { onSubmit, isLoading, isSuccess } = props;
 
   return (
     <Flex gap="3.75rem">
@@ -39,7 +39,6 @@ function RegisterView(props: IRegisterViewProps) {
         <Box maxW="25rem">
           <CreateAccountForm
             initialValues={createAccountEmptyState()}
-            isFailed={hasError}
             isSubmitting={isLoading}
             isSuccess={isSuccess}
             onSubmit={onSubmit}

@@ -12,7 +12,7 @@ import {
 } from "./CreateAccountForm.types";
 
 function CreateAccountForm(props: ICreateAccountFormProps) {
-  const { initialValues, isFailed, isSubmitting, isSuccess, onSubmit } = props;
+  const { initialValues, isSubmitting, isSuccess, onSubmit } = props;
 
   const {
     control,
@@ -70,7 +70,7 @@ function CreateAccountForm(props: ICreateAccountFormProps) {
       <Button
         type="submit"
         marginTop="2rem"
-        isDisabled={!isValid || isFailed}
+        isDisabled={!isValid}
         isLoading={isSubmitting}
       >
         Create Account

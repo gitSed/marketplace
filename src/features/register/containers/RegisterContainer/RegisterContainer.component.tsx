@@ -50,7 +50,6 @@ function RegisterContainer(props: IRegisterContainerProps) {
   return (
     <RegisterView
       onSubmit={handleSubmit}
-      hasError={!!errorAlert}
       isLoading={isFetching}
       isSuccess={!!successAlert}
     />
