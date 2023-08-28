@@ -2,7 +2,10 @@ import { PropsWithChildren } from "react";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 
-import { withStyledSystem } from "@/features/shared/components";
+import {
+  withFetcherSystem,
+  withStyledSystem,
+} from "@/features/shared/components";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -12,17 +15,19 @@ export const metadata: Metadata = {
 };
 
 function RootLayout({ children }: PropsWithChildren) {
-  const AppWithStyledSystem = withStyledSystem(
+  const AppWithChakraUI = withStyledSystem(
     ({ children }: PropsWithChildren) => {
       return <>{children}</>;
     },
     "chakra-ui"
   );
 
+  const AppWithReactQuery = withFetcherSystem(AppWithChakraUI, "react-query");
+
   return (
     <html lang="en">
       <body className={inter.className}>
-        <AppWithStyledSystem>{children}</AppWithStyledSystem>
+        <AppWithReactQuery>{children}</AppWithReactQuery>
       </body>
     </html>
   );

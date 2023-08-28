@@ -1,5 +1,4 @@
-import { useCallback, useRef, useState } from "react";
-
+import { useCallback, useEffect, useRef } from "react";
 import { ToastId, useToast } from "@chakra-ui/react";
 
 import { RegisterView } from "@/features/register/components";
@@ -13,12 +12,12 @@ import { IRegisterContainerProps } from "./RegisterContainer.types";
 const toastDuration = 40000;
 
 function RegisterContainer(props: IRegisterContainerProps) {
-  const { repository } = props;
+  const { repository, fetcher } = props;
 
   const toastIdRef = useRef<ToastId>();
 
-  const [isFetching, setIsFetching] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(false);
+  const { mutate, error, isError, isLoading, isSuccess } =
+    fetcher.createAccountMutation(createAccount(repository));
 
   const toast = useToast({
     position: "bottom",
@@ -29,7 +28,7 @@ function RegisterContainer(props: IRegisterContainerProps) {
     if (toastIdRef.current) {
       toast.close(toastIdRef.current);
     }
-  }, [toast]);
+  }, [toastIdRef, toast]);
 
   const showToast = useCallback(
     (status: "info" | "warning" | "success", message: string) => {
@@ -45,35 +44,35 @@ function RegisterContainer(props: IRegisterContainerProps) {
   );
 
   const handleSubmit = (formValues: Account) => {
-    setIsFetching(true);
-
     const request: CreateAccountRequest = {
       email: formValues.email,
       password: formValues.password,
       username: formValues.username,
     };
 
-    createAccount(repository)(request)
-      .then(() => {
-        showToast("success", "Account created successfully");
-        setIsSuccess(true);
-      })
-      .catch((error) => {
-        if (error instanceof FetchError) {
-          showToast("warning", error.message);
-        } else {
-          showToast("warning", "Something went wrong");
-        }
-      })
-      .finally(() => {
-        setIsFetching(false);
-      });
+    mutate(request);
   };
+
+  useEffect(() => {
+    if (isSuccess) {
+      showToast("success", "Account created successfully");
+    }
+  }, [isSuccess]);
+
+  useEffect(() => {
+    if (isError) {
+      if (error instanceof FetchError) {
+        showToast("warning", error.message);
+      } else {
+        showToast("warning", "Something went wrong");
+      }
+    }
+  }, [isError]);
 
   return (
     <RegisterView
       onSubmit={handleSubmit}
-      isLoading={isFetching}
+      isLoading={isLoading}
       isSuccess={isSuccess}
     />
   );
