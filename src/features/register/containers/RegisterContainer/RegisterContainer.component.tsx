@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef } from "react";
 import { ToastId, useToast } from "@chakra-ui/react";
+import { useRouter } from "next/navigation";
 
 import { RegisterView } from "@/features/register/components";
 import { Alert } from "@/features/shared/components";
@@ -14,6 +15,7 @@ const toastDuration = 40000;
 function RegisterContainer(props: IRegisterContainerProps) {
   const { repository, fetcher } = props;
 
+  const router = useRouter();
   const toastIdRef = useRef<ToastId>();
 
   const { mutate, error, isError, isLoading, isSuccess } =
@@ -56,6 +58,7 @@ function RegisterContainer(props: IRegisterContainerProps) {
   useEffect(() => {
     if (isSuccess) {
       showToast("success", "Account created successfully");
+      router.push("/");
     }
   }, [isSuccess]);
 
