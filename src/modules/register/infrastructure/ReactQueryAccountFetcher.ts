@@ -6,7 +6,7 @@ function useCreateMutation(
   mutationFn: (request: CreateAccountRequest) => Promise<void>
 ) {
   const { mutateAsync, isLoading, isSuccess, isError, error } = useMutation(
-    "create-account",
+    "create-account-mutation",
     mutationFn
   );
 

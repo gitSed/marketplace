@@ -1,7 +1,9 @@
-import { User, UserRepository } from "../domain";
+import { UserRepository } from "../domain";
 
-async function getAllUsers(repository: UserRepository): Promise<User[]> {
-  return repository.getAll();
+function getAllUsers(repository: UserRepository) {
+  return async () => {
+    return await repository.getAll();
+  };
 }
 
 export default getAllUsers;

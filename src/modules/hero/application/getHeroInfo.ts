@@ -1,7 +1,9 @@
-import { Hero, HeroRepository } from "../domain";
+import { HeroRepository } from "../domain";
 
-async function getHeroInfo(repository: HeroRepository): Promise<Hero> {
-  return repository.get();
+function getHeroInfo(repository: HeroRepository) {
+  return async () => {
+    return await repository.get();
+  };
 }
 
 export default getHeroInfo;

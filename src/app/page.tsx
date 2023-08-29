@@ -1,12 +1,19 @@
 "use client";
 import { Navbar } from "@/features/shared/components";
 import { HomeContainer } from "@/features/home/containers";
-import { FetchUserRepository } from "@/modules/user/infrastructure";
+import {
+  FetchUserRepository,
+  ReactQueryUserFetcher,
+} from "@/modules/user/infrastructure";
 import { FetchHeroRepository } from "@/modules/hero/infrastructure";
+import ReactQueryHeroFetcher from "@/modules/hero/infrastructure/ReactQueryHeroFetcher";
 
 function HomePage() {
   const userRepository = new FetchUserRepository();
   const heroRepository = new FetchHeroRepository();
+
+  const userFetcher = new ReactQueryUserFetcher();
+  const heroFetcher = new ReactQueryHeroFetcher();
 
   /**
    * If offline mode is needed, we can create offline repositories:
@@ -17,7 +24,10 @@ function HomePage() {
   return (
     <main>
       <Navbar />
-      <HomeContainer repositories={{ heroRepository, userRepository }} />
+      <HomeContainer
+        repositories={{ heroRepository, userRepository }}
+        fetchers={{ userFetcher, heroFetcher }}
+      />
     </main>
   );
 }

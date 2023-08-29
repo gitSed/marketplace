@@ -1,16 +1,14 @@
-import { useEffect, useState } from "react";
 import { Box } from "@chakra-ui/react";
 
 import { HeroView } from "@/features/home/components";
 import { getHeroInfo } from "@/modules/hero/application";
-import { Hero } from "@/modules/hero/domain";
 
 import { IHeroContainerProps } from "./HeroContainer.types";
 
 function HeroContainer(props: IHeroContainerProps) {
-  const { repository } = props;
+  const { repository, fetcher } = props;
 
-  const [hero, setHero] = useState<Hero | undefined>();
+  const { data: hero } = fetcher.getHeroInfoQuery(getHeroInfo(repository));
 
   const renderLoading = (): JSX.Element => {
     return (
@@ -22,12 +20,6 @@ function HeroContainer(props: IHeroContainerProps) {
       </Box>
     );
   };
-
-  useEffect(() => {
-    getHeroInfo(repository).then((hero) => {
-      setHero(hero);
-    });
-  }, []);
 
   if (!hero) {
     return renderLoading();
