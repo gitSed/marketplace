@@ -5,8 +5,10 @@ import {
   FetchUserRepository,
   ReactQueryUserFetcher,
 } from "@/modules/user/infrastructure";
-import { FetchHeroRepository } from "@/modules/hero/infrastructure";
-import ReactQueryHeroFetcher from "@/modules/hero/infrastructure/ReactQueryHeroFetcher";
+import {
+  FetchHeroRepository,
+  ReactQueryHeroFetcher,
+} from "@/modules/hero/infrastructure";
 
 function HomePage() {
   const userRepository = new FetchUserRepository();
