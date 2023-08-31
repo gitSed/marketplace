@@ -15,7 +15,7 @@ const Button = {
     },
   },
   variants: {
-    solid: (): Record<string, any> => ({
+    solid: (): Record<string, unknown> => ({
       bg: "primary.500",
       color: colors.buttonColor ? "buttonColor" : "white",
       border: "none",
@@ -37,7 +37,7 @@ const Button = {
         },
       },
     }),
-    solidWithContrast: (): Record<string, any> => ({
+    solidWithContrast: (): Record<string, unknown> => ({
       bg: "primary.500",
       color: "white",
       border: "none",
@@ -57,7 +57,7 @@ const Button = {
         pointerEvents: "none",
       },
     }),
-    outline: (): Record<string, any> => ({
+    outline: (): Record<string, unknown> => ({
       color: "primary.500",
       borderColor: "primary.500",
       _hover: {
@@ -80,7 +80,7 @@ const Button = {
         },
       },
     }),
-    link: (): Record<string, any> => ({
+    link: (): Record<string, unknown> => ({
       fontSize: "0.875rem",
       fontWeight: "600",
       color: "primary.500",
@@ -98,7 +98,7 @@ const Button = {
         },
       },
     }),
-    text: (): Record<string, any> => ({
+    text: (): Record<string, unknown> => ({
       ...textStyles.paragraph,
       border: "none",
       bg: "transparent",
@@ -122,7 +122,7 @@ const Button = {
         paddingLeft: "0.5rem",
       },
     }),
-    ghost: (): Record<string, any> => ({
+    ghost: (): Record<string, unknown> => ({
       color: "base.300",
       border: "none",
       bg: "transparent",
@@ -140,14 +140,14 @@ const Button = {
         bg: "transparent",
       },
     }),
-    plain: (): Record<string, any> => ({
+    plain: (): Record<string, unknown> => ({
       ...textStyles.button,
       bg: "base.100",
       py: "0.75rem",
       minHeight: "1rem",
       height: "auto",
     }),
-    menu: (): Record<string, any> => ({
+    menu: (): Record<string, unknown> => ({
       ...textStyles.paragraph,
       fontWeight: "500",
       bg: "transparent",

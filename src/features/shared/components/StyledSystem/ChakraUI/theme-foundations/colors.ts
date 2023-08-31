@@ -1,4 +1,4 @@
-const colors: Record<string, any> = {
+const colors: Record<string, unknown> = {
   primary: {
     100: "#E8F0FF",
     200: "#E2A69A",

@@ -2,6 +2,7 @@ import { createIcon } from "@chakra-ui/react";
 
 import { addKeys } from "@/features/shared/utils/icons.utils";
 
+/* eslint-disable react/jsx-key */
 const UserIcon = createIcon({
   displayName: "UserIcon",
   viewBox: "0 0 20 20",

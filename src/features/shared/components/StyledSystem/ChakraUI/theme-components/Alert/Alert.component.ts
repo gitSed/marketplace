@@ -11,7 +11,7 @@ const Alert = {
     },
   },
   variants: {
-    error: (): Record<string, any> => ({
+    error: (): Record<string, unknown> => ({
       container: {
         bg: "danger.100",
       },
@@ -25,7 +25,7 @@ const Alert = {
         color: "black",
       },
     }),
-    info: (): Record<string, any> => ({
+    info: (): Record<string, unknown> => ({
       container: {
         bg: "informative.100",
         borderColor: "informative.300",

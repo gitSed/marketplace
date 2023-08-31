@@ -11,7 +11,7 @@ import Button from "./theme-components/Button";
 import Link from "./theme-components/Link";
 import Alert from "./theme-components/Alert";
 
-const defaultTheme: Record<string, any> = {
+const defaultTheme: Record<string, unknown> = {
   styles: {
     global: {
       body: {
@@ -32,8 +32,8 @@ const defaultTheme: Record<string, any> = {
 };
 
 export const overrideTheme = (
-  customTheme: Record<string, any> = {}
-): Record<string, any> => {
+  customTheme: Record<string, unknown> = {}
+): Record<string, unknown> => {
   const theme = { ...defaultTheme, ...customTheme };
 
   return extendTheme(theme);
