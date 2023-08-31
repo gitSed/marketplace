@@ -1,4 +1,4 @@
-import { HeroRepository } from "../domain";
+import { HeroRepository } from "../domain/repositories";
 
 function getHeroInfo(repository: HeroRepository) {
   return async () => {

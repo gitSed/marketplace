@@ -1,6 +1,7 @@
 import { useQuery } from "react-query";
 
-import { User, UserFetcher } from "../domain";
+import { User } from "../domain/entities";
+import { UserFetcher } from "../domain/fetchers";
 
 function useGetAllUsersQuery(queryFn: () => Promise<Array<User>>) {
   const { data, error, isError, isLoading, isSuccess } = useQuery<Array<User>>(

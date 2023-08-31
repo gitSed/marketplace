@@ -1,6 +1,7 @@
 import { useMutation } from "react-query";
 
-import { AccountFetcher, CreateAccountRequest } from "../domain";
+import { CreateAccountRequest } from "../domain/entities";
+import { AccountFetcher } from "../domain/fetchers";
 
 function useCreateMutation(
   mutationFn: (request: CreateAccountRequest) => Promise<void>

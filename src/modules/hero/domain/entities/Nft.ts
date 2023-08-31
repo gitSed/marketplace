@@ -1,5 +1,5 @@
-import { NftPrice, NftBid } from "@/modules/nft/domain";
-import { Media } from "@/modules/shared/domain";
+import { NftPrice, NftBid } from "@/modules/nft/domain/entities";
+import { Media } from "@/modules/shared/domain/entities";
 
 import NftCreator from "./NftCreator";
 

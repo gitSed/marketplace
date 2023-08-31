@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import { Input } from "@/features/shared/components";
-import { AccountSchema } from "@/modules/register/domain";
+import { AccountSchema } from "@/modules/register/domain/entities";
 
 import {
   ICreateAccountFormProps,

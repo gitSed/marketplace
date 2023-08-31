@@ -4,8 +4,11 @@ import { useRouter } from "next/navigation";
 
 import { RegisterView } from "@/features/register/components";
 import { Alert } from "@/features/shared/components";
-import { FetchError } from "@/modules/shared/domain";
-import { CreateAccountRequest, Account } from "@/modules/register/domain";
+import { FetchError } from "@/modules/shared/domain/errors";
+import {
+  CreateAccountRequest,
+  Account,
+} from "@/modules/register/domain/entities";
 import { createAccount } from "@/modules/register/application";
 
 import { IRegisterContainerProps } from "./RegisterContainer.types";

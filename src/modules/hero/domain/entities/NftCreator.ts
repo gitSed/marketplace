@@ -1,4 +1,4 @@
-import { Media } from "@/modules/shared/domain";
+import { Media } from "@/modules/shared/domain/entities";
 
 interface NftCreator {
   id: string;

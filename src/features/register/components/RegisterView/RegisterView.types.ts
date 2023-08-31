@@ -1,4 +1,4 @@
-import { Account } from "@/modules/register/domain";
+import { Account } from "@/modules/register/domain/entities";
 
 export interface IRegisterViewProps {
   onSubmit: (account: Account) => void;

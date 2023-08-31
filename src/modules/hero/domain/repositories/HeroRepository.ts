@@ -1,4 +1,4 @@
-import HeroInfo from "./Hero";
+import HeroInfo from "../entities/Hero";
 
 interface HeroRepository {
   get(): Promise<HeroInfo>;

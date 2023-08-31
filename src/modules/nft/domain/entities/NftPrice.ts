@@ -1,4 +1,4 @@
-import { Amount } from "@/modules/shared/domain";
+import { Amount } from "@/modules/shared/domain/entities";
 
 interface NftPrice {
   amount: Amount;

@@ -1,4 +1,5 @@
-import { Hero, HeroRepository } from "../domain";
+import { Hero } from "../domain/entities";
+import { HeroRepository } from "../domain/repositories";
 
 interface ApiHero {
   id: string;

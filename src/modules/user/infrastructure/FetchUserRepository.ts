@@ -1,4 +1,5 @@
-import { User, UserRepository } from "../domain";
+import { UserRepository } from "../domain/repositories";
+import { User } from "../domain/entities";
 
 interface ApiUser {
   [id: number]: {

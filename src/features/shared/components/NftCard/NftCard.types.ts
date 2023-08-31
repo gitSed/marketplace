@@ -1,4 +1,4 @@
-import { Nft, NftCreator } from "@/modules/hero/domain";
+import { Nft, NftCreator } from "@/modules/hero/domain/entities";
 
 export interface INftCardProps {
   nft: Nft;

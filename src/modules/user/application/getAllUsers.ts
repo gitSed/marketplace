@@ -1,4 +1,4 @@
-import { UserRepository } from "../domain";
+import { UserRepository } from "../domain/repositories";
 
 function getAllUsers(repository: UserRepository) {
   return async () => {

@@ -1,4 +1,4 @@
-import Hero from "./Hero";
+import Hero from "../entities/Hero";
 
 interface HeroFetcher {
   readonly getHeroInfoQuery: (queryFn: () => Promise<Hero>) => {

@@ -1,6 +1,7 @@
-import { FetchError } from "@/modules/shared/domain";
+import { FetchError } from "@/modules/shared/domain/errors";
 
-import { CreateAccountRequest, AccountRepository } from "../domain";
+import { AccountRepository } from "../domain/repositories";
+import { CreateAccountRequest } from "../domain/entities";
 
 class FetchAccountRepository implements AccountRepository {
   async create(request: CreateAccountRequest) {

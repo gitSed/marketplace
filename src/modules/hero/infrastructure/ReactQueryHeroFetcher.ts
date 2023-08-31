@@ -1,6 +1,7 @@
 import { useQuery } from "react-query";
 
-import { Hero, HeroFetcher } from "../domain";
+import { Hero } from "../domain/entities";
+import { HeroFetcher } from "../domain/fetchers";
 
 function useGetHeroInfoQuery(queryFn: () => Promise<Hero>) {
   const { data, error, isError, isLoading, isSuccess } = useQuery<Hero>(

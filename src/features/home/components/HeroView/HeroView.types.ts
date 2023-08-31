@@ -1,4 +1,4 @@
-import { Hero, HeroSummary } from "@/modules/hero/domain";
+import { Hero, HeroSummary } from "@/modules/hero/domain/entities";
 
 export interface IHeroViewProps {
   hero: Hero;

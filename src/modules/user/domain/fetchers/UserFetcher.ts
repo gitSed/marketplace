@@ -1,4 +1,4 @@
-import User from "./User";
+import User from "../entities/User";
 
 interface UserFetcher {
   readonly getAllUsersQuery: (queryFn: () => Promise<Array<User>>) => {

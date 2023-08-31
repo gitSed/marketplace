@@ -1,4 +1,4 @@
-import CreateAccountRequest from "./CreateAccountRequest";
+import CreateAccountRequest from "../entities/CreateAccountRequest";
 
 interface AccountFetcher {
   readonly createAccountMutation: (
