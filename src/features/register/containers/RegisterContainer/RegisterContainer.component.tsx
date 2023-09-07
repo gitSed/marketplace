@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef } from "react";
 import { ToastId, useToast } from "@chakra-ui/react";
 import { useRouter } from "next/navigation";
+import { useMachine } from "@xstate/react";
 
 import { RegisterView } from "@/features/register/components";
 import { Alert } from "@/features/shared/components";
@@ -10,6 +11,7 @@ import {
   Account,
 } from "@/modules/register/domain/entities";
 import { createAccount } from "@/modules/register/application";
+import { createAccountMachine } from "@/modules/register/domain/machines";
 
 import { IRegisterContainerProps } from "./RegisterContainer.types";
 
@@ -21,8 +23,17 @@ function RegisterContainer(props: IRegisterContainerProps) {
   const router = useRouter();
   const toastIdRef = useRef<ToastId>();
 
-  const { mutate, error, isError, isLoading, isSuccess } =
-    fetcher.createAccountMutation(createAccount(repository));
+  const { mutate, isLoading, isSuccess } = fetcher.createAccountMutation(
+    createAccount(repository)
+  );
+
+  const [state, send] = useMachine(createAccountMachine, {
+    services: {
+      createAccount: (context) => async () => {
+        await mutate(context.request);
+      },
+    },
+  });
 
   const toast = useToast({
     position: "bottom",
@@ -54,26 +65,23 @@ function RegisterContainer(props: IRegisterContainerProps) {
       password: formValues.password,
       username: formValues.username,
     };
-
-    mutate(request);
+    send("SUBMIT", { data: request });
   };
 
   useEffect(() => {
-    if (isSuccess) {
+    if (state.value === "success") {
       showToast("success", "Account created successfully");
       router.push("/");
     }
-  }, [isSuccess]);
 
-  useEffect(() => {
-    if (isError) {
-      if (error instanceof FetchError) {
-        showToast("warning", error.message);
+    if (state.value === "error") {
+      if (state.event.data instanceof FetchError) {
+        showToast("warning", state.event.data.message);
       } else {
         showToast("warning", "Something went wrong");
       }
     }
-  }, [isError]);
+  }, [state.value]);
 
   return (
     <RegisterView
